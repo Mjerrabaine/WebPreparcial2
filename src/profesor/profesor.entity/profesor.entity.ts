@@ -1,5 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-
+import { Column, Entity, PrimaryGeneratedColumn , OneToMany} from 'typeorm';
+import { PropuestaEntity } from "../propuesta/propuesta.entity/propuesta.entity";
 @Entity()
 export class ProfesorEntity {
  @PrimaryGeneratedColumn('uuid')
@@ -13,4 +13,7 @@ export class ProfesorEntity {
  
  @Column()
  numExtension: string;
+
+ @OneToMany(() => PropuestaEntity, propuesta => propuesta.profesor)
+ exhibitions: PropuestaEntity[];
 }
